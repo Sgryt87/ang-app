@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {EventService} from './shared/event.service';
 import {ToasterService} from '../common/toaster.service';
+import {ActivatedRoute} from '@angular/router';
+import {IEvent} from './shared';
 
 @Component({
-    selector: 'events-list',
     template: `
         <div>
             <h1>Upcoming Angular Events</h1>
@@ -21,9 +22,11 @@ import {ToasterService} from '../common/toaster.service';
 })
 
 export class EventsListComponent implements OnInit {
-    events: any[];
+    events: IEvent[];
 
-    constructor(private eventService: EventService, private toastr: ToasterService) {
+    constructor(private eventService: EventService,
+                private toastr: ToasterService,
+                private route: ActivatedRoute) {
     }
 
     handleThumbnailClick(eventName) {
@@ -31,6 +34,13 @@ export class EventsListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.events = this.eventService.getEvents();
+        // replaced with resolver in routes
+        // this.eventService.getEvents().subscribe(
+        //     events => {
+        //         this.events = events;
+        //     }
+        // );
+
+        this.events = this.route.snapshot.data['events']; // ['events'] -> matches resolve:{events:'...'}
     }
 }

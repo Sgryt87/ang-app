@@ -237,5 +237,7 @@ fabric.properties
 .idea/sonarlint
 
 NOTES
+/src/app/events/events.js
 
 # End of https://www.gitignore.io/api/git,node,macos,angular,phpstorm
+
