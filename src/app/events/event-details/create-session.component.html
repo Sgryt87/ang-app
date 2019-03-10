@@ -4,7 +4,7 @@
 <div class="col-md-6">
     <form [formGroup]="newSessionForm"
           (ngSubmit)="saveSession(newSessionForm.value)"
-          autocomplete="off">
+          autocomplete="off" novalidate>
         <div class="form-group" [ngClass]="{'error': name.invalid && name.dirty}">
             <label for="sessionName">Session Name:</label>
             <em *ngIf="name.invalid && name.dirty">Required</em>
@@ -58,6 +58,7 @@
         <button type="submit" class="btn btn-primary"
                 [disabled]="newSessionForm.invalid">Save
         </button>
-        <button type="button" class="btn btn-default">Cancel</button>
+        <button type="button" class="btn btn-default"
+        (click)="cancel()">Cancel</button>
     </form>
 </div>

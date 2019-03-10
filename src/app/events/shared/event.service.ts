@@ -6,24 +6,32 @@ import {IEvent} from './event.model';
 
 @Injectable()
 export class EventService {
-    getEvents(): Observable<IEvent[]> {
+    private EVENTS: IEvent[] = events;
+    private index: any;
+
+    public getEvents(): Observable<IEvent[]> {
         const subject = new Subject<IEvent[]>();
         setTimeout(() => {
-            subject.next(EVENTS);
+            subject.next(this.EVENTS);
             subject.complete();
         }, 100);
         return subject;
     }
 
-    getEvent(id: number): IEvent {
-        return EVENTS.find(event => event.id === id);
+    public getEvent(id: number): IEvent {
+        return this.EVENTS.find(event => event.id === id);
     }
 
-    saveEvent(event): void {
+    public saveEvent(event: IEvent): void {
         event.id = 999;
-        event.session = [];
-        EVENTS.push(event);
+        event.sessions = [];
+        this.EVENTS.push(event);
+    }
+
+    public updateEvent(event: IEvent): void {
+        this.index = this.EVENTS.findIndex(x => x.id === event.id);
+        this.EVENTS[this.index] = event;
     }
 }
 
-const EVENTS: IEvent[] = events;
+// const EVENTS: IEvent[] = events;
