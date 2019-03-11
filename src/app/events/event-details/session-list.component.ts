@@ -1,6 +1,5 @@
 import {Component, Input, OnChanges} from '@angular/core';
 import {ISession} from '../shared';
-import {el} from '@angular/platform-browser/testing/src/browser_util';
 
 @Component({
     selector: 'session-list',
