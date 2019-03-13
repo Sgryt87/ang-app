@@ -25,7 +25,6 @@
 
 import {InjectionToken} from '@angular/core';
 
-
 export let TOASTR_TOKEN: InjectionToken<IToastr> = new InjectionToken<IToastr>('toastr');
 
 

@@ -10,7 +10,7 @@ import {IEvent} from './shared';
 export class EventThumbnailComponent {
     @Input() event: IEvent; // event(data) passed form parent
 
-    getStartTimeClass() {
+    getStartTimeClass(): string[] {
         // #1
         // const isEarlyStart = this.event && this.event.time === '8:00 am';
         // return {green: isEarlyStart, bold: isEarlyStart};

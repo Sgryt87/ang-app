@@ -16,7 +16,6 @@ export class DurationPipe implements PipeTransform {
                 return 'Full day';
             default:
                 return value.toString();
-
         }
     }
 }

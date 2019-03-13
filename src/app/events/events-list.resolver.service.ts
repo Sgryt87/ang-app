@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Resolve} from '@angular/router';
 import {map} from 'rxjs/operators';
 import {EventService} from './shared/event.service';
+import {IEvent} from './shared';
 
 @Injectable()
 export class EventsListResolver implements Resolve<any> {
@@ -11,6 +12,6 @@ export class EventsListResolver implements Resolve<any> {
     resolve() {
         return this.eventService.getEvents()
             .pipe(
-                map(events => events));
+                map((events: IEvent[]) => events));
     }
 }

@@ -14,7 +14,7 @@ export class EventsListComponent implements OnInit {
                 private route: ActivatedRoute) {
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         // replaced with resolver in routes
         // this.eventService.getEvents().subscribe(
         //     events => {
