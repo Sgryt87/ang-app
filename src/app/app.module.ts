@@ -19,7 +19,10 @@ import {
     EventsListResolver,
     CreateSessionComponent,
     SessionListComponent,
-    DurationPipe
+    DurationPipe,
+    UpvoteComponent,
+    VoterService,
+    LocationValidatorDirective
 } from './events';
 
 import {AuthService} from './user/auth.service';
@@ -50,6 +53,8 @@ const jQuery: any = window['$']; // TODO: refactor
         DurationPipe,
         SimpleModalComponent,
         ModalTriggerDirective,
+        UpvoteComponent,
+        LocationValidatorDirective
     ],
     providers: [
         EventService,
@@ -58,7 +63,8 @@ const jQuery: any = window['$']; // TODO: refactor
         EventRouteActivator,
         EventsListResolver,
         {provide: 'canDeactivateCreateEvent', useValue: checkDirtyState}, // TODO: refactor
-        AuthService
+        AuthService,
+        VoterService
     ],
     bootstrap: [EventsAppComponent]
 })
