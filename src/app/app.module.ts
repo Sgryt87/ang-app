@@ -15,18 +15,18 @@ import {
     EventService,
     EventDetailsComponent,
     CreateEventComponent,
-    EventRouteActivator,
     EventsListResolver,
     CreateSessionComponent,
     SessionListComponent,
     DurationPipe,
     UpvoteComponent,
     VoterService,
-    LocationValidatorDirective
+    LocationValidatorDirective, EventResolver
 } from './events';
 
 import {AuthService} from './user/auth.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 
 const toastr: IToastr = window['toastr']; // TODO: refactor
@@ -37,7 +37,8 @@ const jQuery: any = window['$']; // TODO: refactor
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
-        RouterModule.forRoot(appRoutes)
+        RouterModule.forRoot(appRoutes),
+        HttpClientModule
     ],
     declarations: [
         EventsAppComponent,
@@ -60,8 +61,8 @@ const jQuery: any = window['$']; // TODO: refactor
         EventService,
         {provide: TOASTR_TOKEN, useValue: toastr},
         {provide: JQ_TOKEN, useValue: jQuery},
-        EventRouteActivator,
         EventsListResolver,
+        EventResolver,
         {provide: 'canDeactivateCreateEvent', useValue: checkDirtyState}, // TODO: refactor
         AuthService,
         VoterService

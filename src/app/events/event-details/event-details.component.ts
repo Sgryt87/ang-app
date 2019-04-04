@@ -16,15 +16,13 @@ export class EventDetailsComponent implements OnInit {
     public sortBy: string = 'votes';
 
     constructor(private eventService: EventService,
-                private route: ActivatedRoute,
-                private router: Router
-    ) {
+                private route: ActivatedRoute) {
 
     }
 
     ngOnInit(): void {
-        this.route.params.forEach((params: Params) => {
-            this.event = this.eventService.getEvent(+params['id']);
+        this.route.data.forEach((data: IEvent) => {
+            this.event = data['event'];
             this.addMode = false;
         });
         // this.event = this.eventService.getEvent(+this.route.snapshot.params['id']);
@@ -39,7 +37,8 @@ export class EventDetailsComponent implements OnInit {
             .map((s: ISession) => s.id));
         session.id = +this.nextId + 1;
         this.event.sessions.push(session);
-        this.eventService.updateEvent(this.event);
+        this.eventService.saveEvent(this.event)
+            .subscribe();
         this.addMode = false;
     }
 

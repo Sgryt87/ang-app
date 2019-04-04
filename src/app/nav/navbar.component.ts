@@ -17,10 +17,10 @@ export class NavBarComponent {
     }
 
     searchSessions(searchTerm: string): void {
-        this.eventService.searchSessions(searchTerm).subscribe(
-            (sessions: ISession[]) => {
-                this.foundSessions = sessions;
-            }
-        );
+        this.eventService.searchSessions(searchTerm)
+            .subscribe((sessions: ISession[]) => {
+                    this.foundSessions = sessions;
+                }
+            );
     }
 }
