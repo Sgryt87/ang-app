@@ -31,13 +31,22 @@ export class ProfileComponent implements OnInit {
         });
     }
 
-    saveProfile(formValues: IUser): void {
+    saveProfile(formValues: IUser) {
         console.log(formValues);
         if (this.profileForm.valid) {
-            this.authService.updateCurrentUser(formValues.firstName, formValues.lastName);
-            this.router.navigate(['events']);
-            this.toastr.success('Profile Saved');
+            this.authService.updateCurrentUser(formValues.firstName, formValues.lastName)
+                .subscribe(() => {
+                    this.toastr.success('Profile Saved');
+                });
+            // this.router.navigate(['events']);
         }
+    }
+
+    logout(): void {
+        this.authService.logout()
+            .subscribe(() => {
+                this.router.navigate(['/user/login']);
+            });
     }
 
     cancel(): void {
