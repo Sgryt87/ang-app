@@ -1,7 +1,5 @@
-import {VoterService} from './voter.service';
-// import {HttpClient} from 'selenium-webdriver/http';
-import {HttpClient} from '@angular/common/http';
-import {ISession} from '../shared';
+import {VoterService} from '../voter.service';
+import {ISession} from '../../shared';
 import {Observable, of} from 'rxjs';
 
 describe('VoterService', () => {
@@ -59,6 +57,18 @@ describe('VoterService', () => {
                     {},
                     jasmine.any(Object));
 
+        });
+    });
+
+    describe('userHasVoted', () => {
+        it('should return bool if the user has voted', () => {
+            const session: ISession = <ISession>{
+                id: 6,
+                voters: ['john']
+            };
+            voterService.userHasVoted(<ISession>session, session.voters[0]);
+
+            expect(voterService.userHasVoted).toBeTruthy();
         });
     });
 

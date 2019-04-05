@@ -1,5 +1,5 @@
-import {SessionListComponent} from './session-list.component';
-import {ISession} from '../shared';
+import {SessionListComponent} from '../session-list.component';
+import {ISession} from '../../shared';
 
 describe('SessionListComponent', () => {
     let component: SessionListComponent;
