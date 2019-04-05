@@ -10,7 +10,7 @@ export class VoterService {
 
     }
 
-    deleteVoter(session: ISession, eventId: number, voterName: string): void {
+    deleteVoter(eventId: number, session: ISession, voterName: string): void {
         session.voters = session.voters
             .filter((voter: string) => voter !== voterName);
         const url: string = `/api/events/${eventId}/sessions/${session.id}/voters/${voterName}`;
