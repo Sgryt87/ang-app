@@ -13,7 +13,7 @@ export class VoterService {
     deleteVoter(eventId: number, session: ISession, voterName: string): void {
         session.voters = session.voters
             .filter((voter: string) => voter !== voterName);
-        const url: string = `/api/events/${eventId}/sessions/${session.id}/voters/${voterName}`;
+        const url = `/api/events/${eventId}/sessions/${session.id}/voters/${voterName}`;
         this.http.delete(url)
             .pipe(catchError(this.handleError('deleteVoter')))
             .subscribe();
@@ -22,7 +22,7 @@ export class VoterService {
     addVoter(eventId: number, session: ISession, voterName: string): void {
         session.voters.push(voterName);
 
-        const url: string = `/api/events/${eventId}/sessions/${session.id}/voters/${voterName}`;
+        const url = `/api/events/${eventId}/sessions/${session.id}/voters/${voterName}`;
         const options: object = {headers: new HttpHeaders({'Content-type': 'application/json'})};
         this.http.post(url, {}, options)
             .pipe(catchError(this.handleError('addVoter')))

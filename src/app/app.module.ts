@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {NavBarComponent} from './nav/navbar.component';
-import {RouterModule} from '@angular/router';
+import {PreloadAllModules, RouterModule} from '@angular/router';
 import {appRoutes} from './routes';
 import {Error404Component} from './errors/404.component';
 import {EventsAppComponent} from './events-app.component';
@@ -37,7 +37,7 @@ const jQuery: any = window['$']; // TODO: refactor
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
-        RouterModule.forRoot(appRoutes),
+        RouterModule.forRoot(appRoutes, {preloadingStrategy: PreloadAllModules}),
         HttpClientModule
     ],
     declarations: [

@@ -8,8 +8,8 @@ import {catchError} from 'rxjs/operators';
 
 @Injectable()
 export class EventService {
-    private EVENTS: IEvent[] = events;
-    private index: any;
+    // private EVENTS: IEvent[] = events;
+    // private index: any;
 
     constructor(private http: HttpClient) {
 
